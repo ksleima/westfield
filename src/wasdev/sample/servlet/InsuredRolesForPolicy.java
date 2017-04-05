@@ -151,7 +151,7 @@ public class InsuredRolesForPolicy extends HttpServlet{
 
 		// SOAP Body
 		SOAPBody soapBody = envelope.getBody();
-		SOAPElement retrieveInsuredRolesForPolicyRequest = soapBody.addChildElement("", "",
+		SOAPElement retrieveInsuredRolesForPolicyRequest = soapBody.addChildElement("RetrieveInsuredRolesForPolicyRequest", "",
 				"http://www.westfieldgrp.com/enterprisemodel/wx"); //TODO local name needs to be modified according the WSDL
 		SOAPElement requestHeader = retrieveInsuredRolesForPolicyRequest.addChildElement("requestHeader");
 		SOAPElement id = requestHeader.addChildElement("id");
