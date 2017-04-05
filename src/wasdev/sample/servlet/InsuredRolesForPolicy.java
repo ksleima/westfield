@@ -151,9 +151,9 @@ public class InsuredRolesForPolicy extends HttpServlet{
 
 		// SOAP Body
 		SOAPBody soapBody = envelope.getBody();
-		SOAPElement retrieveClaimDetailsRequest = soapBody.addChildElement("", "",
+		SOAPElement retrieveInsuredRolesForPolicyRequest = soapBody.addChildElement("", "",
 				"http://www.westfieldgrp.com/enterprisemodel/wx"); //TODO local name needs to be modified according the WSDL
-		SOAPElement requestHeader = retrieveClaimDetailsRequest.addChildElement("requestHeader");
+		SOAPElement requestHeader = retrieveInsuredRolesForPolicyRequest.addChildElement("requestHeader");
 		SOAPElement id = requestHeader.addChildElement("id");
 		id.addTextNode(idValue);// "c54d408f-0def-4c00-bb5d-0a2c516cc9c5");
 		SOAPElement cmdType = requestHeader.addChildElement("cmdType");
@@ -164,10 +164,10 @@ public class InsuredRolesForPolicy extends HttpServlet{
 		echoBack.addTextNode("false");
 		SOAPElement refreshCache = requestHeader.addChildElement("refreshCache");
 		refreshCache.addTextNode("false");
-		SOAPElement policyNumber = retrieveClaimDetailsRequest.addChildElement("policyNumber");
+		SOAPElement policyNumber = retrieveInsuredRolesForPolicyRequest.addChildElement("policyNumber");
 		policyNumber.addTextNode(policyNumberVal);// "0001531939");
 		
-		SOAPElement verificationDate = retrieveClaimDetailsRequest.addChildElement("verificationDate");
+		SOAPElement verificationDate = retrieveInsuredRolesForPolicyRequest.addChildElement("verificationDate");
 		verificationDate.addTextNode(verificationDateVal);
 
 		SOAPHeader soapHeader = envelope.getHeader();
