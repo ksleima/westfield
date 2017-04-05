@@ -3,6 +3,6 @@ applications:
   memory: 512M
   instances: 1
   domain: mybluemix.net
-  name: westfieldbridge
-  host: westfieldbridge
+  name: nodered-westfield
+  host: nodered-westfield
   disk_quota: 1024M
