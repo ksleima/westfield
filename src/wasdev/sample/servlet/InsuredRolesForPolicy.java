@@ -76,7 +76,8 @@ public class InsuredRolesForPolicy extends HttpServlet{
 		SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
 		SOAPConnection soapConnection = soapConnectionFactory.createConnection();
 
-		String url = "https://servicestest.westfieldgrp.com/InsuranceAgreementManager/service/retrieveInsuredRolesForPolicy/2.0"; 
+//		String url = "https://servicestest.westfieldgrp.com/InsuranceAgreementManager/service/retrieveInsuredRolesForPolicy/2.0"; 
+		String url = "https://servicestest.westfieldgrp.com:44330/InsuranceAgreementManager/service/retrieveInsuredRolesForPolicy/2.0";
 		SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(id, policyNumber, verificationDate), url);
 
 		// Process the SOAP Response
