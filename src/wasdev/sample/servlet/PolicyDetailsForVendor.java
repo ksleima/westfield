@@ -83,7 +83,7 @@ public class PolicyDetailsForVendor extends HttpServlet {
 
 		return response;
 	}
-	
+/*	
 	private void trustAllCertificates() {
 		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
 			
@@ -111,7 +111,28 @@ public class PolicyDetailsForVendor extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
+*/	
+		private void trustAllCertificates() {
+		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+				return null;
+			}
+
+			public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+			}
+
+			public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+			}
+		} };
+
+		try {
+			SSLContext sc = SSLContext.getInstance("SSL");
+			sc.init(null, trustAllCerts, new java.security.SecureRandom());
+			HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	private SOAPMessage createSOAPRequest(String idValue, String policyNumberVal, String verificationDateVal) throws Exception {
 		MessageFactory messageFactory = MessageFactory.newInstance();
