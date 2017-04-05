@@ -144,9 +144,9 @@ public class PolicyDetailsForVendor extends HttpServlet {
 
 		// SOAP Body
 		SOAPBody soapBody = envelope.getBody();
-		SOAPElement retrieveClaimDetailsRequest = soapBody.addChildElement("RetrieveClaimDetailsRequest", "",
+		SOAPElement retrievePolicyDetailsForVendorRequest = soapBody.addChildElement("RetrievePolicyDetailsForVendorRequest", "",
 				"http://www.westfieldgrp.com/enterprisemodel/wx");
-		SOAPElement requestHeader = retrieveClaimDetailsRequest.addChildElement("requestHeader");
+		SOAPElement requestHeader = retrievePolicyDetailsForVendorRequest.addChildElement("requestHeader");
 		SOAPElement id = requestHeader.addChildElement("id");
 		id.addTextNode(idValue);// "c54d408f-0def-4c00-bb5d-0a2c516cc9c5");
 		SOAPElement cmdType = requestHeader.addChildElement("cmdType");
@@ -157,10 +157,10 @@ public class PolicyDetailsForVendor extends HttpServlet {
 		echoBack.addTextNode("false");
 		SOAPElement refreshCache = requestHeader.addChildElement("refreshCache");
 		refreshCache.addTextNode("false");
-		SOAPElement policyNumber = retrieveClaimDetailsRequest.addChildElement("policyNumber");
+		SOAPElement policyNumber = retrievePolicyDetailsForVendorRequest.addChildElement("policyNumber");
 		policyNumber.addTextNode(policyNumberVal);// "0001531939");
 		
-		SOAPElement verificationDate = retrieveClaimDetailsRequest.addChildElement("verificationDate");
+		SOAPElement verificationDate = retrievePolicyDetailsForVendorRequest.addChildElement("verificationDate");
 		verificationDate.addTextNode(verificationDateVal);
 
 		SOAPHeader soapHeader = envelope.getHeader();
