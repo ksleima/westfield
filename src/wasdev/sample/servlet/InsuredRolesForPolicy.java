@@ -164,10 +164,13 @@ public class InsuredRolesForPolicy extends HttpServlet{
 		echoBack.addTextNode("false");
 		SOAPElement refreshCache = requestHeader.addChildElement("refreshCache");
 		refreshCache.addTextNode("false");
-		SOAPElement policyNumber = retrieveInsuredRolesForPolicyRequest.addChildElement("policyNumber");
+		
+		SOAPElement queryCriteria = retrieveInsuredRolesForPolicyRequest.addChildElement("queryCriteria");
+		
+		SOAPElement policyNumber = queryCriteria.addChildElement("policyNumber");
 		policyNumber.addTextNode(policyNumberVal);// "0001531939");
 		
-		SOAPElement verificationDate = retrieveInsuredRolesForPolicyRequest.addChildElement("verificationDate");
+		SOAPElement verificationDate = queryCriteria.addChildElement("verificationDate");
 		verificationDate.addTextNode(verificationDateVal);
 
 		SOAPHeader soapHeader = envelope.getHeader();
