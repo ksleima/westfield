@@ -73,8 +73,9 @@ public class SimpleServlet extends HttpServlet {
 		SOAPConnection soapConnection = soapConnectionFactory.createConnection();
 
 		String url = "https://servicestest.westfieldgrp.com:44330/ClaimInquiry/service/retrieveClaimDetails/1.0";
+		System.out.print("\n Before call");
 		SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(id, claimNumber), url);
-
+		System.out.print("\n After call");
 		// Process the SOAP Response
 		String response = printSOAPResponse(soapResponse);
 
