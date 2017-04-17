@@ -74,8 +74,9 @@ public class PolicyDetailsForVendor extends HttpServlet {
 
 //		String url = "https://servicestest.westfieldgrp.com/PolicyInquiry/service/retrievePolicyDetailsForVendor/2.0";
 		String url = "https://servicestest.westfieldgrp.com:44330/PolicyInquiry/service/retrievePolicyDetailsForVendor/2.0";
+		System.out.print("\n Before call to retrievePolicyDetailsForVendor");
 		SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(id, policyNumber, verificationDate), url);
-
+		System.out.print("\n After call to retrievePolicyDetailsForVendor");
 		// Process the SOAP Response
 		String response = printSOAPResponse(soapResponse);
 
