@@ -71,12 +71,15 @@ public class PolicyDetailsForVendor extends HttpServlet {
 
 		SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
 		SOAPConnection soapConnection = soapConnectionFactory.createConnection();
-
+	
 //		String url = "https://servicestest.westfieldgrp.com/PolicyInquiry/service/retrievePolicyDetailsForVendor/2.0";
 		String url = "https://servicestest.westfieldgrp.com:44330/PolicyInquiry/service/retrievePolicyDetailsForVendor/2.0";
-		System.out.print("\n Before call to retrievePolicyDetailsForVendor" + System.currentTimeMillis());
+//		System.out.print("\n Before call to retrievePolicyDetailsForVendor" + System.currentTimeMillis());
+		long requestTime = System.currentTimeMillis();
 		SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(id, policyNumber, verificationDate), url);
-		System.out.print("\n After call to retrievePolicyDetailsForVendor" + System.currentTimeMillis());
+		long responseTime = System.currentTimeMillis();
+//		System.out.print("\n After call to retrievePolicyDetailsForVendor" + System.currentTimeMillis());
+		System.out.print("\n Request response time" + responseTime - requestTime);
 		// Process the SOAP Response
 		String response = printSOAPResponse(soapResponse);
 
