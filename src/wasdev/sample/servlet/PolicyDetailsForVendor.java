@@ -78,8 +78,9 @@ public class PolicyDetailsForVendor extends HttpServlet {
 		long requestTime = System.currentTimeMillis();
 		SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(id, policyNumber, verificationDate), url);
 		long responseTime = System.currentTimeMillis();
+		long roundtriptime = responseTime - requestTime;
 //		System.out.print("\n After call to retrievePolicyDetailsForVendor" + System.currentTimeMillis());
-		System.out.print("\n Request response time" + responseTime - requestTime);
+		System.out.print("\n Request response time" + roundtriptime);
 		// Process the SOAP Response
 		String response = printSOAPResponse(soapResponse);
 
