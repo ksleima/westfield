@@ -71,22 +71,16 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 	
 	public  void trustAllCertificates() {
 		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-			
-			public boolean isServerTrusted(X509Certificate[] arg0) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-			
-			public boolean isClientTrusted(X509Certificate[] arg0) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-			
-			public X509Certificate[] getAcceptedIssuers() {
-				// TODO Auto-generated method stub
+			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
 				return null;
 			}
-		}};
+
+			public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+			}
+
+			public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+			}
+		} };
 
 		try {
 			SSLContext sc = SSLContext.getInstance("SSL");
