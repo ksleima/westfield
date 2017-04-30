@@ -56,11 +56,11 @@ public class StaticProxyService {
 	}
 
 	private static void setProxy(){
-		System.setProperty("http.proxyHost", host);
+/*		System.setProperty("http.proxyHost", host);
 		System.setProperty("http.proxyPort", String.valueOf(port));
 		System.setProperty("https.proxyHost",host);
 		System.setProperty("https.proxyPort", String.valueOf(port));
-	}
+*/	}
 
 	public String getEncodedAuth(){
 		//If not using Java8 you will have to use another Base64 encoded, e.g. apache commons codec.
