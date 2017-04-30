@@ -109,7 +109,7 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 		System.out.print("\nResponse SOAP Message = " + sourceContent);
 		StreamResult result = new StreamResult(os);
 		transformer.transform(sourceContent, result);
-		System.out.print("\Result = " + result);
+		System.out.print("\nResult = " + result);
 		os.flush();
 		os.close();
 
