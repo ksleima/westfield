@@ -5,7 +5,7 @@ import java.net.Authenticator;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import Decoder.BASE64Encoder;
+//import Decoder.BASE64Encoder;
 
 public class WestfieldProxyConnection {
 	
@@ -21,7 +21,7 @@ public class WestfieldProxyConnection {
 	private void configureConnection() throws IOException{
 		StaticProxyService proxy = StaticProxyService.getInstance();
 		URL oURL = new URL(url);
-		String authorization  =  new BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
+		String authorization  =  new sun.misc.BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
 		conn = (HttpURLConnection) oURL.openConnection();
 		
 		conn.setRequestProperty("Content-type", "text/xml; charset=utf-8");

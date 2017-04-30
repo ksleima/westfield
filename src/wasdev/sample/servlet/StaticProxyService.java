@@ -5,7 +5,7 @@ import java.net.MalformedURLException;
 import java.net.PasswordAuthentication;
 import java.net.URL;
 
-import Decoder.BASE64Encoder;
+//import Decoder.BASE64Encoder;
 
 public class StaticProxyService {
 
@@ -64,7 +64,7 @@ public class StaticProxyService {
 
 	public String getEncodedAuth(){
 		//If not using Java8 you will have to use another Base64 encoded, e.g. apache commons codec.
-		String encoded = new BASE64Encoder().encode((user + ":" + password).getBytes());
+		String encoded = new  new sun.misc.BASE64Encoder().encode((user + ":" + password).getBytes());
 		return encoded;
 	}
 
