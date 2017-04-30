@@ -112,9 +112,9 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 		System.out.print("\nResult = " + result);
 		os.flush();
 		os.close();
-
-		System.out.println(os.toByteArray());
-		return new String(os.toByteArray(), "utf8");
+		String s = new String(os.toByteArray(), "utf8");
+		System.out.println(s);
+		return s
 	}
 	
 	private String handleSoapResponse(HttpURLConnection conn) throws IOException, UnsupportedEncodingException {
