@@ -11,7 +11,7 @@ import javax.xml.soap.SOAPHeader;
 import javax.xml.soap.SOAPMessage;
 import javax.xml.soap.SOAPPart;
 
-import Decoder.BASE64Encoder;
+//import Decoder.BASE64Encoder;
 
 @WebServlet("/SimpleServlet1")
 public class WestfieldSimpleServlet  extends WestfieldServiceServlet{
@@ -69,7 +69,7 @@ public class WestfieldSimpleServlet  extends WestfieldServiceServlet{
 
 		MimeHeaders headers = soapMessage.getMimeHeaders();
 
-		String authorization  =  new  new sun.misc.BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
+		String authorization  = new sun.misc.BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
 		headers.addHeader("Authorization", "Basic " + authorization);
 
 		soapMessage.saveChanges();

@@ -64,7 +64,7 @@ public class StaticProxyService {
 
 	public String getEncodedAuth(){
 		//If not using Java8 you will have to use another Base64 encoded, e.g. apache commons codec.
-		String encoded = new  new sun.misc.BASE64Encoder().encode((user + ":" + password).getBytes());
+		String encoded = new sun.misc.BASE64Encoder().encode((user + ":" + password).getBytes());
 		return encoded;
 	}
 
