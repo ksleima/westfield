@@ -106,10 +106,10 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
 		Source sourceContent = soapMessage.getSOAPPart().getContent();
-		System.out.print("\nResponse SOAP Message = ");
+		System.out.print("\nResponse SOAP Message = " + sourceContent);
 		StreamResult result = new StreamResult(os);
 		transformer.transform(sourceContent, result);
-
+		System.out.print("\Result = " + result);
 		os.flush();
 		os.close();
 
