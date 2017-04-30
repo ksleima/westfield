@@ -34,8 +34,13 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
+		HTTPProxyDemo demo = new HTTPProxyDemo();
+		String s = demo.getResponse();
+		response.getWriter().print(s);
+/*
+
 		try {
-			
+		
 			String token = request.getParameter("token");
 			if ("5531999940875".equals(token)) {	
 				soapRequestUrl = getRequestUrl();
@@ -52,7 +57,7 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace(response.getWriter());
 		}
-
+*/
 	}
 	
 	public abstract SOAPMessage createSoapRequestMessage(HttpServletRequest request) throws Exception;
