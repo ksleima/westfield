@@ -22,7 +22,7 @@ public class WestfieldProxyConnection {
 		StaticProxyService proxy = StaticProxyService.getInstance();
 		URL oURL = new URL(url);
 		String authorization  =  new sun.misc.BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
-		conn = (HttpURLConnection) oURL.openConnection();
+		conn = (HttpsURLConnection) oURL.openConnection();
 		
 		conn.setRequestProperty("Content-type", "text/xml; charset=utf-8");
 		conn.setRequestProperty("SOAPAction","https://servicestest.westfieldgrp.com:44330/ClaimInquiry/service/retrieveClaimDetails/1.0");
