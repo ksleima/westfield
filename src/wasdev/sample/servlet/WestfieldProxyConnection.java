@@ -2,7 +2,7 @@ package wasdev.sample.servlet;
 
 import java.io.IOException;
 import java.net.Authenticator;
-import java.net.HttpsURLConnection;
+import javax.net.ssl.HttpsURLConnection
 import java.net.URL;
 
 //import Decoder.BASE64Encoder;
