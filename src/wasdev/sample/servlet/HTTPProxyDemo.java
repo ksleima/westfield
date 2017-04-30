@@ -13,8 +13,7 @@ public class HTTPProxyDemo {
   }
   
   public HTTPProxyDemo(){
-    String testUrl = "http://ip.jsontest.com/";
-    System.out.println(getResponse(StaticProxyService.getInstance(), testUrl));
+   
   }
   
   public String getResponse(StaticaProxyAuthenticator proxy, String urlToRead) {

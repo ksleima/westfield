@@ -34,8 +34,10 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
+		String testUrl = "http://ip.jsontest.com/";
 		HTTPProxyDemo demo = new HTTPProxyDemo();
-		String s = demo.getResponse();
+		String s = getResponse(StaticProxyService.getInstance(), testUrl)
+		System.out.println(s);
 		response.getWriter().print(s);
 /*
 
