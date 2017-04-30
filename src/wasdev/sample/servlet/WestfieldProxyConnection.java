@@ -26,7 +26,7 @@ public class WestfieldProxyConnection {
 		
 		conn.setRequestProperty("Content-type", "text/xml; charset=utf-8");
 		conn.setRequestProperty("SOAPAction","https://servicestest.westfieldgrp.com:44330/ClaimInquiry/service/retrieveClaimDetails/1.0");
-		conn.setRequestMethod("GET");
+		conn.setRequestMethod("POST");
 		conn.setRequestProperty("Authorization", "Basic " + authorization);
 		conn.setRequestProperty("Proxy-Authorization", "Basic " + proxy.getEncodedAuth());
 		conn.setReadTimeout(2000);
