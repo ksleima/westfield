@@ -84,6 +84,7 @@ public class InsuredRolesForPolicy extends HttpServlet{
 		// Process the SOAP Response
 		String response = printSOAPResponse(soapResponse);
 
+		
 		soapConnection.close();
 
 		return response;
