@@ -29,6 +29,7 @@ public class WestfieldProxyConnection {
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Authorization", "Basic " + authorization);
 		conn.setRequestProperty("Proxy-Authorization", "Basic " + proxy.getEncodedAuth());
+		System.out.print("proxy encoded auth is " + proxy.getEncodedAuth());
 		conn.setRequestProperty("Accept-Encoding", "gzip");
 		conn.setDoInput(true);
 		conn.setDoOutput(true);
