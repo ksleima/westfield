@@ -31,7 +31,7 @@ public class WestfieldSimpleServlet  extends WestfieldServiceServlet{
 
 	@Override
 	public String getRequestUrl() {
-		String url = "https://servicestest.westfieldgrp.com:44330/ClaimInquiry/service/retrieveClaimDetails/1.0";
+		String url = "http://servicestest.westfieldgrp.com:44330/ClaimInquiry/service/retrieveClaimDetails/1.0";
 		return url;
 	}
 	@Override
