@@ -46,7 +46,7 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 			if ("5531999940875".equals(token)) {	
 				soapRequestUrl = getRequestUrl();
 				trustAllCertificates();				
-				HttpURLConnection conn = new WestfieldProxyConnection(soapRequestUrl).getConnection() ;
+				HttpsURLConnection conn = new WestfieldProxyConnection(soapRequestUrl).getConnection() ;
 				SOAPMessage message  = createSoapRequestMessage(request);
 				String soapRequestBody = parseSOAPMessage(message);
 				conn = performSOAPRequest(conn,soapRequestBody);
@@ -62,7 +62,7 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 	
 	public abstract SOAPMessage createSoapRequestMessage(HttpServletRequest request) throws Exception;
 
-	public HttpURLConnection performSOAPRequest(HttpURLConnection conn,String soapRequestBody) throws Exception{
+	public HttpsURLConnection performSOAPRequest(HttpsURLConnection conn,String soapRequestBody) throws Exception{
 		
 		OutputStream reqStream = conn.getOutputStream();
 		reqStream.write(soapRequestBody.getBytes());
@@ -117,7 +117,7 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 		return s;
 	}
 	
-	private String handleSoapResponse(HttpURLConnection conn) throws IOException, UnsupportedEncodingException {
+	private String handleSoapResponse(HttpsURLConnection conn) throws IOException, UnsupportedEncodingException {
 		InputStream is = conn.getInputStream();
 		if(conn.getContentEncoding()!=null && conn.getContentEncoding().equalsIgnoreCase("gzip")){
 			is = new GZIPInputStream(is);

@@ -2,14 +2,14 @@ package wasdev.sample.servlet;
 
 import java.io.IOException;
 import java.net.Authenticator;
-import java.net.HttpURLConnection;
+import java.net.HttpsURLConnection;
 import java.net.URL;
 
 //import Decoder.BASE64Encoder;
 
 public class WestfieldProxyConnection {
 	
-	private HttpURLConnection conn;
+	private HttpsURLConnection conn;
 	private static final String SOAP_CREDENTIALS = "SVC-INT-IBM-TEST:dcYxYU6n4@UGH!Rk";
 	private String url;
 
@@ -38,7 +38,7 @@ public class WestfieldProxyConnection {
 		Authenticator.setDefault(proxy.getAuth());
 	}
 	
-	public HttpURLConnection getConnection(){
+	public HttpsURLConnection getConnection(){
 		return conn;
 	}
 	
