@@ -16,7 +16,7 @@ public class HTTPProxyDemo {
    
   }
   
-  public String getResponse(StaticaProxyAuthenticator proxy, String urlToRead) {
+  public String getResponse(StaticProxyService proxy, String urlToRead) {
         String result = "";
         try {
          URL url = new URL(urlToRead);
