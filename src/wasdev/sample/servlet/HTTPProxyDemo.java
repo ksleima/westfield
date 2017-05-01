@@ -7,6 +7,7 @@ import java.net.Authenticator;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.zip.GZIPInputStream;
+import java.net.*;
 public class HTTPProxyDemo {
   public static void main(String[] args) {
     new HTTPProxyDemo();
