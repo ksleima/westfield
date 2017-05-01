@@ -21,7 +21,7 @@ public class HTTPProxyDemo {
         try {
          URL url = new URL(urlToRead);
            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-           conn.setRequestProperty("Proxy-Authorization", "Basic " + proxy.getEncodedAuth());
+   //        conn.setRequestProperty("Proxy-Authorization", "Basic " + proxy.getEncodedAuth());
            conn.setRequestProperty("Accept-Encoding", "gzip");
            Authenticator.setDefault(proxy.getAuth());
            conn.setRequestMethod("POST");
