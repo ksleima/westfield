@@ -35,7 +35,7 @@ public class StaticProxyService {
 
 	private static void setProxyEnvironment(){
 		//String proxyUrlEnv = System.getenv("STATICA_URL");
-		String proxyUrlEnv = "https://statica3924:731871029c0c6382@sl-ams-01-guido.statica.io:9293";
+		String proxyUrlEnv = "http://statica3924:731871029c0c6382@sl-ams-01-guido.statica.io:9293";
 		
 		if(proxyUrlEnv!=null){
 			try {
@@ -60,6 +60,8 @@ public class StaticProxyService {
 		System.setProperty("http.proxyPort", String.valueOf(port));
 		System.setProperty("https.proxyHost",host);
 		System.setProperty("https.proxyPort", String.valueOf(port));
+		System.setProperty("http.proxyUser", user);
+		System.setProperty("http.proxyPassword", password);
 	}
 
 	public String getEncodedAuth(){
