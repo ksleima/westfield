@@ -40,7 +40,7 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 	    //String proxyUrlEnv = "http://statica3924:731871029c0c6382@sl-ams-01-guido.statica.io:9293";
 
 		//String proxyHost, int proxyPort, final String userid, final String password, String url
-		ProxyPass pp = new ProxyPass("sl-ams-01-guido.statica.io", 9293, "statica3924", "731871029c0c6382", testUrl):
+		ProxyPass pp = new ProxyPass("sl-ams-01-guido.statica.io", 9293, "statica3924", "731871029c0c6382", testUrl);
 		
 	    response.getWriter().print("Done");
 		
