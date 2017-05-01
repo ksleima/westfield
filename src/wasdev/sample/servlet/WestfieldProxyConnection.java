@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.Authenticator;
 import javax.net.ssl.HttpsURLConnection;
 import java.net.URL;
-import javax.net.HttpURLConnection;
+import java.net.HttpURLConnection;
 
 //import Decoder.BASE64Encoder;
 
