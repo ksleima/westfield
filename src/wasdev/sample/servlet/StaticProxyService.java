@@ -85,10 +85,9 @@ public class StaticProxyService {
 			this.user = user;
 			this.password = password;
 		}
-
+		 @Override
 		protected PasswordAuthentication getPasswordAuthentication() {
 			return new PasswordAuthentication(user, password.toCharArray());
 		}
 	}
-
 }
