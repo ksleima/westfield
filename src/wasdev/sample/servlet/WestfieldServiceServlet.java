@@ -36,10 +36,18 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 		response.setContentType("text/html");
 		//String testUrl = "http://ip.jsontest.com/";
 		String testUrl = "https://servicestest.westfieldgrp.com:44330/ClaimInquiry/service/retrieveClaimDetails/1.0";
-		HTTPProxyDemo demo = new HTTPProxyDemo();
-		String s = demo.getResponse(StaticProxyService.getInstance(), testUrl);
-		System.out.println(s);
-		response.getWriter().print(s);
+
+	    //String proxyUrlEnv = "http://statica3924:731871029c0c6382@sl-ams-01-guido.statica.io:9293";
+
+		//String proxyHost, int proxyPort, final String userid, final String password, String url
+		ProxyPass pp = new ProxyPass("sl-ams-01-guido.statica.io", 9293, "statica3924", "731871029c0c6382", testUrl):
+		
+	    response.getWriter().print("Done");
+		
+//		HTTPProxyDemo demo = new HTTPProxyDemo();
+//		String s = demo.getResponse(StaticProxyService.getInstance(), testUrl);
+//		System.out.println(s);
+//		response.getWriter().print(s);
 /*		try {
 		
 			String token = request.getParameter("token");
