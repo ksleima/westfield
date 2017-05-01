@@ -28,7 +28,7 @@ public class WestfieldProxyConnection {
 		conn.setRequestProperty("SOAPAction","https://servicestest.westfieldgrp.com:44330/ClaimInquiry/service/retrieveClaimDetails/1.0");
 		conn.setRequestMethod("POST");
 		conn.setRequestProperty("Authorization", "Basic " + authorization);
-		conn.setRequestProperty("Proxy-Authorization", "Basic " + proxy.getEncodedAuth());
+		// conn.setRequestProperty("Proxy-Authorization", "Basic " + proxy.getEncodedAuth());
 		conn.setReadTimeout(2000);
 		System.out.print("proxy encoded auth is " + proxy.getEncodedAuth());
 		conn.setRequestProperty("Accept-Encoding", "gzip");
