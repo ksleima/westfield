@@ -35,12 +35,12 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 
 		response.setContentType("text/html");
 		//String testUrl = "http://ip.jsontest.com/";
-		//String testUrl = "http://servicestest.westfieldgrp.com:44330/ClaimInquiry/service/retrieveClaimDetails/1.0";
-		//HTTPProxyDemo demo = new HTTPProxyDemo();
-		//String s = demo.getResponse(StaticProxyService.getInstance(), testUrl);
-		//System.out.println(s);
-		//response.getWriter().print(s);
-		try {
+		String testUrl = "https://servicestest.westfieldgrp.com:44330/ClaimInquiry/service/retrieveClaimDetails/1.0";
+		HTTPProxyDemo demo = new HTTPProxyDemo();
+		String s = demo.getResponse(StaticProxyService.getInstance(), testUrl);
+		System.out.println(s);
+		response.getWriter().print(s);
+/*		try {
 		
 			String token = request.getParameter("token");
 			if ("5531999940875".equals(token)) {	
@@ -58,6 +58,7 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace(response.getWriter());
 		}
+		*/
 	}
 	
 	public abstract SOAPMessage createSoapRequestMessage(HttpServletRequest request) throws Exception;
