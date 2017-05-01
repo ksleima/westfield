@@ -24,7 +24,7 @@ public class HTTPProxyDemo {
            conn.setRequestProperty("Proxy-Authorization", "Basic " + proxy.getEncodedAuth());
            conn.setRequestProperty("Accept-Encoding", "gzip");
            Authenticator.setDefault(proxy.getAuth());
-           conn.setRequestMethod("GET");
+           conn.setRequestMethod("POST");
            InputStream is = conn.getInputStream();
            if(conn.getContentEncoding()!=null && conn.getContentEncoding().equalsIgnoreCase("gzip")){
              is = new GZIPInputStream(is);
