@@ -16,11 +16,11 @@ public class ProxyPass {
             Authenticator.setDefault(new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-            if (getRequestorType().equals(RequestorType.PROXY)) {
-            return new PasswordAuthentication(userid, password.toCharArray());
-            }
-            return super.getPasswordAuthentication();
-            }
+            //if (getRequestorType().equals(RequestorType.PROXY)) {
+            return new PasswordAuthentication("statica3924", "731871029c0c6382".toCharArray());
+            //}
+            //return super.getPasswordAuthentication();
+            //}
             });
 
             uc.connect();
