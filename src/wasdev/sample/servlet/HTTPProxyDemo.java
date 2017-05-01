@@ -23,8 +23,18 @@ public class HTTPProxyDemo {
            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
    //        conn.setRequestProperty("Proxy-Authorization", "Basic " + proxy.getEncodedAuth());
            conn.setRequestProperty("Accept-Encoding", "gzip");
-           Authenticator.setDefault(proxy.getAuth());
-           conn.setRequestMethod("POST");
+           //Authenticator.setDefault(proxy.getAuth());
+            Authenticator.setDefault(new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+            if (getRequestorType().equals(RequestorType.PROXY)) {
+            return new PasswordAuthentication("statica3924", "731871029c0c6382".toCharArray());
+            }
+            return super.getPasswordAuthentication();
+            }
+            });
+		   
+		   conn.setRequestMethod("POST");
            InputStream is = conn.getInputStream();
            if(conn.getContentEncoding()!=null && conn.getContentEncoding().equalsIgnoreCase("gzip")){
              is = new GZIPInputStream(is);
