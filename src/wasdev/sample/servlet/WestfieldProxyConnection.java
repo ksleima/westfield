@@ -4,12 +4,13 @@ import java.io.IOException;
 import java.net.Authenticator;
 import javax.net.ssl.HttpsURLConnection;
 import java.net.URL;
+import javax.net.HttpURLConnection;
 
 //import Decoder.BASE64Encoder;
 
 public class WestfieldProxyConnection {
 	
-	private HttpsURLConnection conn;
+	private HttpURLConnection conn;
 	private static final String SOAP_CREDENTIALS = "SVC-INT-IBM-TEST:dcYxYU6n4@UGH!Rk";
 	private String url;
 
@@ -22,7 +23,7 @@ public class WestfieldProxyConnection {
 		StaticProxyService proxy = StaticProxyService.getInstance();
 		URL oURL = new URL(url);
 		String authorization  =  new sun.misc.BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
-		conn = (HttpsURLConnection) oURL.openConnection();
+		conn = (HttpURLConnection) oURL.openConnection();
 		
 		conn.setRequestProperty("Content-type", "text/xml; charset=utf-8");
 		conn.setRequestProperty("SOAPAction","https://servicestest.westfieldgrp.com:44330/ClaimInquiry/service/retrieveClaimDetails/1.0");
@@ -38,7 +39,7 @@ public class WestfieldProxyConnection {
 		Authenticator.setDefault(proxy.getAuth());
 	}
 	
-	public HttpsURLConnection getConnection(){
+	public HttpURLConnection getConnection(){
 		return conn;
 	}
 	
