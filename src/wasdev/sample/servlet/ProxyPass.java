@@ -10,8 +10,7 @@ public class ProxyPass {
         try {
         /* Create a HttpURLConnection Object and set the properties */
             URL u = new URL(url);
-            Proxy proxy =
-            new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
             HttpURLConnection uc = (HttpURLConnection)u.openConnection(proxy);
 
             Authenticator.setDefault(new Authenticator() {
@@ -44,7 +43,7 @@ public class ProxyPass {
         }
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         String proxyhost = "proxy host";
         int proxyport = port;
@@ -53,5 +52,5 @@ public class ProxyPass {
         String url = "https://....";
         new ProxyPass(proxyhost, proxyport, proxylogin, proxypass, url);
 
-    }
+    }*/
 }
