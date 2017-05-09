@@ -11,7 +11,7 @@
 	<property name="warname" value="JavaCloudantApp.war"/>
     <path id="classpathDir">
         <pathelement location="bin"/>
-	<fileset dir="dep-jar"> 
+		<fileset dir="dep-jar"> 
         	<include name="*.jar"/> 
     	</fileset>
     </path>
@@ -43,6 +43,9 @@
 	  		<include name="**/*"/>
 	  		<exclude name="**/*.class"/>
 	  	</fileset>
+		<lib dir="dep-jar">
+	  		<include name="commons-httpclient-3.1.jar"/>
+	  	</lib>
 	  </war>
    </target>
 
