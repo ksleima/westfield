@@ -45,6 +45,8 @@
 	  	</fileset>
 		<lib dir="dep-jar">
 	  		<include name="commons-httpclient-3.1.jar"/>
+			<include name="org-apache-commons-codec.jar"/>
+			<include name="org-apache-commons-logging.jar"/>
 	  	</lib>
 	  </war>
    </target>
