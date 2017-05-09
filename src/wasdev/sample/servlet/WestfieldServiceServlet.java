@@ -90,7 +90,7 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 
 		return socket;
 	}
-
+/*
 	public  void trustAllCertificates() {
 		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
 
@@ -118,6 +118,30 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
+*/
+
+		private void trustAllCertificates() {
+			TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+				public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+					return null;
+				}
+
+				public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+				}
+
+				public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
+				}
+			} };
+
+			try {
+				SSLContext sc = SSLContext.getInstance("SSL");
+				sc.init(null, trustAllCerts, new java.security.SecureRandom());
+				HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 
 	/**
 	 * Method used to print the SOAP Response
