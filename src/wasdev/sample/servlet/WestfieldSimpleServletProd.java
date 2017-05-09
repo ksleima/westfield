@@ -14,7 +14,7 @@ import javax.xml.soap.SOAPPart;
 //import Decoder.BASE64Encoder;
 
 @WebServlet("/SimpleServletProd1")
-public class WestfieldSimpleServlet  extends WestfieldServiceServlet{
+public class WestfieldSimpleServletProd  extends WestfieldServiceServlet{
 	
 	/**
 	 * 
