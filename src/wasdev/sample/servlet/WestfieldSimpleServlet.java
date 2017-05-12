@@ -11,29 +11,22 @@ import javax.xml.soap.SOAPHeader;
 import javax.xml.soap.SOAPMessage;
 import javax.xml.soap.SOAPPart;
 
-//import Decoder.BASE64Encoder;
-
+import Decoder.BASE64Encoder;
+/**
+ * 
+ * @author angsdey2@in.ibm.com
+ *
+ */
 @WebServlet("/SimpleServlet1")
 public class WestfieldSimpleServlet  extends WestfieldServiceServlet{
-	
-	/**
-	 * 
-	 * request example
-	 * 
-	 * <p>https://ineedawar.mybluemix.net/SimpleServlet?token=5531999940875&id=e562a47f-bfb3-4b74-a641-af5336591652&claimNumber=0001546961
-	 * 
-	 * @author leoks
-	 *
-	 */
+
 	private static final String SOAP_CREDENTIALS = "SVC-INT-IBM-TEST:dcYxYU6n4@UGH!Rk";
 	private static final long serialVersionUID = 1L;
 
 
 	@Override
-	public String getRequestUrl() {
-		//String url = "http://www.google.com";
-		String url = "https://westfiledlossadvisorpilot.mybluemix.net/statica/";
-		//String url = "https://servicestest.westfieldgrp.com:44330/ClaimInquiry/service/retrieveClaimDetails/1.0";
+	public String getApiPath() {
+		String url = "/ClaimInquiry/service/retrieveClaimDetails/1.0";
 		return url;
 	}
 	@Override
@@ -71,14 +64,11 @@ public class WestfieldSimpleServlet  extends WestfieldServiceServlet{
 
 		MimeHeaders headers = soapMessage.getMimeHeaders();
 
-		String authorization  = new sun.misc.BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
+		String authorization  =  new BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
 		headers.addHeader("Authorization", "Basic " + authorization);
 
 		soapMessage.saveChanges();
 
 		return soapMessage;
 	}
-	
-
-
 }
