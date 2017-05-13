@@ -48,13 +48,13 @@ public class WestfielfdProxyService {
 				return connection;
 			}
 		});
-		
+/*		
 		System.setProperty("https.proxyHost", "sl-ams-01-guido.statica.io");
 		System.setProperty("https.proxyPort", "9293");
 		System.setProperty("https.proxyUser", "statica3924");
 		System.setProperty("https.proxyPassword", "731871029c0c6382");
+*/
 
-/*
 		Authenticator authenticator = new Authenticator() {
 			@Override
 			public PasswordAuthentication getPasswordAuthentication() {
@@ -63,7 +63,7 @@ public class WestfielfdProxyService {
 			}
 		};
 		Authenticator.setDefault(authenticator);
-*/
+
 		try {
 			SOAPMessage response = connection.call(message, endpoint);
 			connection.close();
