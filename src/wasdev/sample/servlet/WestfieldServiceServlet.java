@@ -15,10 +15,10 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-import javax.net.ssl.SSLContext;
 
+import com.sun.net.ssl.SSLContext;
+import com.sun.net.ssl.TrustManager;
+import com.sun.net.ssl.X509TrustManager;
 /**
  * 
  * @author angsdey2@in.ibm.com
@@ -59,19 +59,26 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 	public abstract SOAPMessage createSoapRequestMessage(HttpServletRequest request) throws Exception;
 
 	public abstract String getApiPath();
-	
-	private void trustAllCertificates() {
+
+
+	public  void trustAllCertificates() {
 		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-				return null;
+				public boolean isServerTrusted(X509Certificate[] arg0) {
+					// TODO Auto-generated method stub
+					return false;
+				}
+	
+				public boolean isClientTrusted(X509Certificate[] arg0) {
+					// TODO Auto-generated method stub
+					return false;
+				}
+	
+				public X509Certificate[] getAcceptedIssuers() {
+					// TODO Auto-generated method stub
+					return null;
+				}
 			}
-
-			public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-			}
-
-			public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-			}
-		} };
+		};
 
 		try {
 			SSLContext sc = SSLContext.getInstance("SSL");
