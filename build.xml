@@ -50,6 +50,7 @@
 			<include name="sun.misc.BASE64Decoder.jar"/>
 			<include name="javax.servlet_3.0.0.jar"/>
 			<include name="com.ibm.ws.javaee.jaxrs.1.1_1.0.1.jar"/>
+			<include name="com.sun.net.ssl.jar"/>
 	  	</lib>
 	  </war>
    </target>
