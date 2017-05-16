@@ -33,9 +33,6 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 	private String soapRequestUrl;
 	
 	@Override
-	protected String getHost();
-	
-	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -64,7 +61,8 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 	public abstract SOAPMessage createSoapRequestMessage(HttpServletRequest request) throws Exception;
 
 	public abstract String getApiPath();
-
+	
+	public abstract String getHost();
 
 	public  void trustAllCertificates() {
 		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
