@@ -11,6 +11,7 @@ import javax.xml.soap.SOAPHeader;
 import javax.xml.soap.SOAPMessage;
 import javax.xml.soap.SOAPPart;
 
+import Decoder.BASE64Encoder;
 
 /**
  * 
@@ -71,6 +72,7 @@ public class InsuredRolesForPolicy extends WestfieldServiceServlet{
 
 		MimeHeaders headers = soapMessage.getMimeHeaders();
 
+		String authorization = new BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
 		
 //		String authorization  =  new BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
 		headers.addHeader("Authorization", "Basic " + authorization);
