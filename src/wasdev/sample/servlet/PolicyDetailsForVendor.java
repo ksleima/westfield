@@ -10,6 +10,8 @@ import javax.xml.soap.SOAPEnvelope;
 import javax.xml.soap.SOAPHeader;
 import javax.xml.soap.SOAPMessage;
 import javax.xml.soap.SOAPPart;
+
+import Decoder.BASE64Encoder;
 /**
  * 
  * @author ibm
@@ -21,6 +23,12 @@ public class PolicyDetailsForVendor extends WestfieldServiceServlet {
 	private static final String SOAP_CREDENTIALS = "SVC-INT-IBM-TEST:dcYxYU6n4@UGH!Rk";
 	private static final long serialVersionUID = 1L;
 
+	
+	@Override
+	protected String getHost(){
+		return "https://servicestest.westfieldgrp.com:44330";
+	}
+	
 	@Override
 	public SOAPMessage createSoapRequestMessage(HttpServletRequest request) throws Exception {
 		String idValue = request.getParameter("id");
@@ -59,9 +67,8 @@ public class PolicyDetailsForVendor extends WestfieldServiceServlet {
 
 		MimeHeaders headers = soapMessage.getMimeHeaders();
 
-		String authorization = new sun.misc.BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
 		
-	//	String authorization  =  new BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
+		String authorization  =  new BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
 		headers.addHeader("Authorization", "Basic " + authorization);
 
 		soapMessage.saveChanges();

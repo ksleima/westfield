@@ -28,9 +28,13 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 
-	private static final String WESTFIELD_HOST = "https://servicestest.westfieldgrp.com:44330";
+	//private static final String WESTFIELD_HOST = "https://servicestest.westfieldgrp.com:44330";
 
 	private String soapRequestUrl;
+	
+	@Override
+	protected String getHost();
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -41,7 +45,7 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 
 			String token = request.getParameter("token");
 			if ("5531999940875".equals(token)) {	
-				soapRequestUrl = WESTFIELD_HOST + getApiPath();
+				soapRequestUrl = getHost() + getApiPath();
 				trustAllCertificates();				
 				SOAPMessage message  = createSoapRequestMessage(request);
 				SOAPMessage soapResponse = WestfielfdProxyService.sendRequestThroughProxy(message, soapRequestUrl);

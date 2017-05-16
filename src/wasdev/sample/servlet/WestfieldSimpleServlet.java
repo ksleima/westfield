@@ -23,7 +23,12 @@ public class WestfieldSimpleServlet  extends WestfieldServiceServlet{
 	private static final String SOAP_CREDENTIALS = "SVC-INT-IBM-TEST:dcYxYU6n4@UGH!Rk";
 	private static final long serialVersionUID = 1L;
 
-
+		@Override
+	protected String getHost(){
+		return "https://servicestest.westfieldgrp.com:44330";
+	}
+	
+	
 	@Override
 	public String getApiPath() {
 		String url = "/ClaimInquiry/service/retrieveClaimDetails/1.0";

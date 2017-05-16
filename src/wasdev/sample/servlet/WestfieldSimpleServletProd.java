@@ -30,10 +30,11 @@ public class WestfieldSimpleServletProd  extends WestfieldServiceServlet{
 
 
 	@Override
-	public String getRequestUrl() {
-		String url = "https://services.westfieldgrp.com/ClaimInquiry/service/retrieveClaimDetails/1.0";
-		return url;
+	protected String getHost(){
+		return "https://services.westfieldgrp.com";
 	}
+	
+	
 	@Override
 	public SOAPMessage createSoapRequestMessage(HttpServletRequest request) throws Exception {
 		String idValue = request.getParameter("id");
@@ -69,7 +70,7 @@ public class WestfieldSimpleServletProd  extends WestfieldServiceServlet{
 
 		MimeHeaders headers = soapMessage.getMimeHeaders();
 
-		String authorization  = BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
+		String authorization  = new BASE64Encoder().encode(SOAP_CREDENTIALS.getBytes());
 		headers.addHeader("Authorization", "Basic " + authorization);
 
 		soapMessage.saveChanges();
