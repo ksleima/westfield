@@ -36,7 +36,6 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		System.setProperty("jdk.http.auth.tunneling.disabledSchemes", "");
 		try {
 
 			String token = request.getParameter("token");
