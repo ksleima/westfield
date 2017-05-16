@@ -1,31 +1,15 @@
 package wasdev.sample.servlet;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.MimeHeaders;
 import javax.xml.soap.SOAPBody;
-import javax.xml.soap.SOAPConnection;
-import javax.xml.soap.SOAPConnectionFactory;
 import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPEnvelope;
 import javax.xml.soap.SOAPHeader;
 import javax.xml.soap.SOAPMessage;
 import javax.xml.soap.SOAPPart;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.stream.StreamResult;
 
 /**
  * 
@@ -37,76 +21,17 @@ import javax.xml.transform.stream.StreamResult;
  *
  */
 @WebServlet("/SimpleServlet")
-public class SimpleServlet extends HttpServlet {
+public class SimpleServlet extends WestfieldServiceServlet {
 	private static final String SOAP_CREDENTIALS = "SVC-INT-IBM-TEST:dcYxYU6n4@UGH!Rk";
 	private static final long serialVersionUID = 1L;
-
+	
+	
+	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		try {
-			String id = request.getParameter("id");
-			String claimNumber = request.getParameter("claimNumber");
-			String token = request.getParameter("token");
-
-			if ("5531999940875".equals(token)) {
-
-				String payload = performSOAPRequest(id, claimNumber);
-
-				response.getWriter().print(payload);
-
-			} else {
-				response.getWriter().print("Wrong token");
-			}
-		} catch (Exception e) {
-			e.printStackTrace(response.getWriter());
-		}
-
-	}
-
-	public String performSOAPRequest(String id, String claimNumber) throws Exception{
-		trustAllCertificates();
-
-		SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-		SOAPConnection soapConnection = soapConnectionFactory.createConnection();
-
-		String url = "https://servicestest.westfieldgrp.com:44330/ClaimInquiry/service/retrieveClaimDetails/1.0";
-		System.out.print("\n Before call");
-		SOAPMessage soapResponse = soapConnection.call(createSOAPRequest(id, claimNumber), url);
-		System.out.print("\n After call");
-		// Process the SOAP Response
-		String response = printSOAPResponse(soapResponse);
-
-		soapConnection.close();
-
-		return response;
-	}
-
-	private void trustAllCertificates() {
-		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-				return null;
-			}
-
-			public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-			}
-
-			public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) {
-			}
-		} };
-
-		try {
-			SSLContext sc = SSLContext.getInstance("SSL");
-			sc.init(null, trustAllCerts, new java.security.SecureRandom());
-			HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	private SOAPMessage createSOAPRequest(String idValue, String claimNumberValue) throws Exception {
+	public SOAPMessage createSoapRequestMessage(HttpServletRequest request) throws Exception {
+		
+		String idValue = request.getParameter("id");
+		String claimNumberValue = request.getParameter("claimNumber");
 		MessageFactory messageFactory = MessageFactory.newInstance();
 		SOAPMessage soapMessage = messageFactory.createMessage();
 		SOAPPart soapPart = soapMessage.getSOAPPart();
@@ -142,32 +67,11 @@ public class SimpleServlet extends HttpServlet {
 
 		soapMessage.saveChanges();
 
-		// /* Print the request message */
-		// System.out.print("Request SOAP Message = ");
-		// soapMessage.writeTo(System.out);
-		// System.out.println();
-
 		return soapMessage;
 	}
 
-	/**
-	 * Method used to print the SOAP Response
-	 */
-	private String printSOAPResponse(SOAPMessage soapResponse) throws Exception {
-
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-
-		TransformerFactory transformerFactory = TransformerFactory.newInstance();
-		Transformer transformer = transformerFactory.newTransformer();
-		Source sourceContent = soapResponse.getSOAPPart().getContent();
-		System.out.print("\nResponse SOAP Message = ");
-		StreamResult result = new StreamResult(os);
-		transformer.transform(sourceContent, result);
-
-		os.flush();
-		os.close();
-
-		return new String(os.toByteArray(), "utf8");
+	@Override
+	public String getApiPath() {
+		return "/ClaimInquiry/service/retrieveClaimDetails/1.0";
 	}
-
 }
