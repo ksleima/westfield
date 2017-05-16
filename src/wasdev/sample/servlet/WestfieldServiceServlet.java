@@ -62,7 +62,7 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 
 	public abstract String getApiPath();
 	
-	public abstract String getHost();
+	protected abstract String getHost();
 
 	public  void trustAllCertificates() {
 		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
