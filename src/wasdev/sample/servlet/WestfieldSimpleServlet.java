@@ -20,7 +20,7 @@ import Decoder.BASE64Encoder;
 @WebServlet("/SimpleServlet1")
 public class WestfieldSimpleServlet  extends WestfieldServiceServlet{
 
-	private static final String SOAP_CREDENTIALS = "SVC-INT-IBM-TEST:dcYxYU6n4@UGH!Rk";
+	//private static final String SOAP_CREDENTIALS = "SVC-INT-IBM-TEST:dcYxYU6n4@UGH!Rk";
 	private static final long serialVersionUID = 1L;
 
 		@Override
@@ -36,6 +36,7 @@ public class WestfieldSimpleServlet  extends WestfieldServiceServlet{
 	}
 	@Override
 	public SOAPMessage createSoapRequestMessage(HttpServletRequest request) throws Exception {
+		String SOAP_CREDENTIALS = System.getenv("SOAP_CREDENTIALS");
 		String idValue = request.getParameter("id");
 		String claimNumberValue = request.getParameter("claimNumber");
 		
