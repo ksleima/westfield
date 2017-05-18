@@ -20,12 +20,12 @@ import Decoder.BASE64Encoder;
 @WebServlet("/SimpleServlet1")
 public class WestfieldSimpleServlet  extends WestfieldServiceServlet{
 
-	//private static final String SOAP_CREDENTIALS = "SVC-INT-IBM-TEST:dcYxYU6n4@UGH!Rk";
 	private static final long serialVersionUID = 1L;
 
-		@Override
+	@Override
 	protected String getHost(){
-		return "https://servicestest.westfieldgrp.com:44330";
+			String westfieldHost = System.getenv("WESTFIELD_HOST");
+			return westfieldHost;
 	}
 	
 	
