@@ -20,6 +20,12 @@ import javax.xml.soap.SOAPMessage;
  *
  */
 public class WestfielfdProxyService {
+	
+	private static Proxy proxy;
+	
+	private WestfielfdProxyService(){
+		
+	}
 
 	/**
 	 * Send soap Request through proxy
@@ -32,7 +38,7 @@ public class WestfielfdProxyService {
 	public static SOAPMessage sendRequestThroughProxy(SOAPMessage message, final String westfieldApiUrl) throws SOAPException, MalformedURLException {
 		SOAPConnectionFactory factory = SOAPConnectionFactory.newInstance();
 		SOAPConnection connection = factory.createConnection();
-		final Proxy p = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("sl-ams-01-guido.statica.io", 9293));
+		final Proxy p = getProxy();
 
 		URL endpoint = new URL(null, westfieldApiUrl, new URLStreamHandler() {
 			protected URLConnection openConnection(URL url) throws IOException {
@@ -58,8 +64,9 @@ public class WestfielfdProxyService {
 		Authenticator authenticator = new Authenticator() {
 			@Override
 			public PasswordAuthentication getPasswordAuthentication() {
-				return (new PasswordAuthentication("statica3924",
-						"731871029c0c6382".toCharArray()));
+				String proxyUser = System.getenv("PROXY_USER");
+				String proxyPass = System.getenv("PROXY_PASS");
+				return (new PasswordAuthentication(proxyUser,proxyPass.toCharArray()));
 			}
 		};
 		Authenticator.setDefault(authenticator);
@@ -74,6 +81,19 @@ public class WestfielfdProxyService {
 			SOAPMessage response = connection.call(message, endpoint);
 			connection.close();
 			return response;
+		}
+	}
+	
+	private static Proxy getProxy(){
+		
+		if(proxy != null){
+			return proxy;
+		}else{
+			System.out.println(System.getenv());
+			String proxyHost = System.getenv("PROXY_HOST");
+			int proxyPort = Integer.valueOf(System.getenv("PROXY_PORT"));
+			proxy  = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
+			return proxy;
 		}
 	}
 }
