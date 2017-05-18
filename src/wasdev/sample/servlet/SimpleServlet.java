@@ -23,18 +23,19 @@ import Decoder.BASE64Encoder;
  */
 @WebServlet("/SimpleServlet")
 public class SimpleServlet extends WestfieldServiceServlet {
-	private static final String SOAP_CREDENTIALS = "SVC-INT-IBM-TEST:dcYxYU6n4@UGH!Rk";
 	private static final long serialVersionUID = 1L;
 	
 	
 	@Override
 	protected String getHost(){
-		return "https://servicestest.westfieldgrp.com:44330";
+		String westfieldHost = System.getenv("WESTFIELD_HOST");
+		return westfieldHost;
 	}
 	
 	@Override
 	public SOAPMessage createSoapRequestMessage(HttpServletRequest request) throws Exception {
 		
+		String SOAP_CREDENTIALS = System.getenv("SOAP_CREDENTIALS");
 		String idValue = request.getParameter("id");
 		String claimNumberValue = request.getParameter("claimNumber");
 		MessageFactory messageFactory = MessageFactory.newInstance();
