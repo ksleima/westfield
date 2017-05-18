@@ -15,7 +15,6 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 
-
 import com.sun.net.ssl.SSLContext;
 import com.sun.net.ssl.TrustManager;
 import com.sun.net.ssl.X509TrustManager;
@@ -41,7 +40,8 @@ public abstract class WestfieldServiceServlet  extends HttpServlet{
 		try {
 
 			String token = request.getParameter("token");
-			if ("5531999940875".equals(token)) {	
+			String westfieldToken  = System.getenv("WESTFIELD_TOKEN");
+			if (westfieldToken.equals(token)) {	
 				soapRequestUrl = getHost() + getApiPath();
 				trustAllCertificates();				
 				SOAPMessage message  = createSoapRequestMessage(request);
