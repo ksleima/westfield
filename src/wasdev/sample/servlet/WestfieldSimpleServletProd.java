@@ -25,18 +25,19 @@ public class WestfieldSimpleServletProd  extends WestfieldServiceServlet{
 	 * @author leoks
 	 *
 	 */
-	private static final String SOAP_CREDENTIALS = "SVC-INT-IBM-PROD:k;l9RXAgMS=yim^v";
 	private static final long serialVersionUID = 1L;
 
 
 	@Override
 	protected String getHost(){
-		return "https://services.westfieldgrp.com";
+		String westfieldHost = System.getenv("WESTFIELD_HOST_PROD");
+		return westfieldHost;
 	}
 	
 	
 	@Override
 	public SOAPMessage createSoapRequestMessage(HttpServletRequest request) throws Exception {
+		String SOAP_CREDENTIALS = System.getenv("SOAP_CREDENTIALS_PROD");
 		String idValue = request.getParameter("id");
 		String claimNumberValue = request.getParameter("claimNumber");
 		
