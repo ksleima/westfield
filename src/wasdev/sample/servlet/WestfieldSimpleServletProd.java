@@ -81,7 +81,7 @@ public class WestfieldSimpleServletProd  extends WestfieldServiceServlet{
 
 	@Override
 	public String getApiPath() {
-		String url = "/ClaimInquiry/service/retrieveClaimDetails/1.0";
+		String url = "/ClaimInquiry/service/retrieveClaimDetails/2.0";
 		return url;
 	}
 
